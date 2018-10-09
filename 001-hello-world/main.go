@@ -12,13 +12,19 @@ func main() {
 
 	for i := 0; i < 3; i++ {
 		sampleFunc(i)
+		sampleFunc2(float64(i))
+		sampleFunc3("str")
 	}
 }
 
 func sampleFunc(i int) {
-	fmt.Println("Sample func", i)
+	fmt.Println("Sample func 1:", i)
 }
 
 func sampleFunc2(i float64) {
-	fmt.Println("Sample func 2")
+	fmt.Println("Sample func 2:", i)
+}
+
+func sampleFunc3(str string) {
+	fmt.Println("Sample func 3:", str)
 }
