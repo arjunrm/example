@@ -1,1 +1,1 @@
-# Example Repo
+# sample codes for go programming
