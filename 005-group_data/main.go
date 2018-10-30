@@ -2,6 +2,16 @@ package main
 
 import "fmt"
 
+type person struct {
+	first string
+	last  string
+}
+
+type secretAgent struct {
+	person
+	ltk bool
+}
+
 func main() {
 	var arr [5]int
 	arr[3] = 10
@@ -105,4 +115,44 @@ func main() {
 		}
 		fmt.Println("")
 	}
+
+	p1 := person{
+		first: "James",
+		last:  "Bond",
+	}
+	fmt.Println(p1)
+
+	slicePerson := make([]person, 5, 10)
+	slicePerson[1] = person{first: "Jon", last: "Carter"}
+	slicePerson = append(slicePerson, person{first: "sample", last: "1"})
+	fmt.Println(slicePerson)
+
+	sa1 := secretAgent{
+		person: person{
+			first: "James",
+			last:  "Bond",
+		},
+		ltk: true,
+	}
+	// inner struct type gets promoted to outer type
+	// if there are name clashes then you could explicitly
+	// call the variable
+	fmt.Println(sa1.first, sa1, sa1.person.last)
+
+	var x1, y1 int
+	x1 = 42
+	y1 = 43
+	fmt.Println(x1, y1)
+	x1, y1 = y1, x1
+	fmt.Println(x1, y1)
+
+	// anonymous struct
+	as1 := struct {
+		name string
+		age  int
+	}{
+		name: "Robb",
+		age:  32,
+	}
+	fmt.Print(as1)
 }
